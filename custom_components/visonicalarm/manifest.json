@@ -1,7 +1,7 @@
 {
   "domain": "visonicalarm",
   "name": "Visonic/Bentel/Tyco Alarm System",
-  "documentation": "https://github.com/And3rsL/VisonicAlarm-for-Hassio",
+  "documentation": "https://github.com/Tiaanh/Tiaan-Alarm-Test",
   "version": "v3.1.0",
   "requirements": [
     "python-dateutil==2.7.3"
