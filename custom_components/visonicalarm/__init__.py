@@ -9,6 +9,8 @@ from datetime import datetime
 
 import voluptuous as vol
 
+from .tiaantest import System
+
 from homeassistant.const import (CONF_HOST, CONF_NAME)
 from homeassistant.helpers import discovery
 from homeassistant.helpers.entity import Entity
