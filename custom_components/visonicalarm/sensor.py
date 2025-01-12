@@ -43,20 +43,25 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     for device in hub.alarm.devices:
         if device is not None:
-            if device.subtype is not None:
-                if (
-                    "CONTACT" in device.subtype
-                    or "MOTION" in device.subtype
-                    or "CURTAIN" in device.subtype
-                ):
-                    _LOGGER.debug(
-                        "New device found [Type:"
-                        + str(device.subtype)
-                        + "] [ID:"
-                        + str(device.id)
-                        + "]"
-                    )
-                    add_devices([VisonicAlarmContact(hub.alarm, device.id)], True)
+            #if device.subtype is not None:
+            if device.device_type == 'ZONE':
+                #if (
+                #    "CONTACT" in device.subtype
+                #    or "MOTION" in device.subtype
+                #    or "CURTAIN" in device.subtype
+                #):
+                
+                deviceid = "dsc_" + str(device.id)
+
+                _LOGGER.debug(
+                    "New device found [Type:"
+                    + str(device.device_type)
+                    + "] [ID:"
+                    + str(deviceid)
+                    + "]"
+                )
+                
+                add_devices([VisonicAlarmContact(hub.alarm, deviceid)], True)
 
 
 class VisonicAlarmContact(Entity):
