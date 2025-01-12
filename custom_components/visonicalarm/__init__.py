@@ -62,7 +62,7 @@ CONFIG_SCHEMA = vol.Schema({
 
 def setup(hass, config):
     """ Setup the Visonic Alarm component."""
-    from visonic import alarm as visonicalarm
+    from .tiaantest import alarm as visonicalarm
     global HUB
     HUB = VisonicAlarmHub(config[DOMAIN], visonicalarm)
     if not HUB.connect():
