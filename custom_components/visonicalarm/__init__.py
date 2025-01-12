@@ -9,8 +9,6 @@ from datetime import datetime
 
 import voluptuous as vol
 
-from .tiaantest import System
-
 from homeassistant.const import (CONF_HOST, CONF_NAME)
 from homeassistant.helpers import discovery
 from homeassistant.helpers.entity import Entity
@@ -62,7 +60,8 @@ CONFIG_SCHEMA = vol.Schema({
 
 def setup(hass, config):
     """ Setup the Visonic Alarm component."""
-    from .tiaantest import alarm as visonicalarm
+    import custom_components.visonicalarm.visonicalarm2.alarm as visonicalarm
+    
     global HUB
     HUB = VisonicAlarmHub(config[DOMAIN], visonicalarm)
     if not HUB.connect():
