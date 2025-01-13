@@ -121,8 +121,14 @@ class GenericDevice(Device):
 
     @property
     def state(self):
-        """ Returns the current state of the motion. """
-        return 'UKNOWN'
+        """ Returns the current state of the contact. """
+        if self.warnings:
+            if 'OPENED' in str(self.warnings):
+                return 'opened'
+            else:
+                return 'closed'
+        else:
+            return 'closed'
 
 class System(object):
     """ Class definition of the main alarm system. """
