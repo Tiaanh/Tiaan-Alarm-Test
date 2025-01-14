@@ -1,6 +1,6 @@
 {
   "domain": "visonicalarm",
-  "name": "Visonic/Bentel/Tyco Alarm System",
+  "name": "DSC ConnectAlarm Integration",
   "documentation": "https://github.com/Tiaanh/Tiaan-Alarm-Test",
   "version": "v0.0.1",
   "requirements": [
