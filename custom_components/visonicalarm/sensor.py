@@ -53,6 +53,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
                     + str(deviceid)
                     + "]"
                 )
+                
                 add_devices([VisonicAlarmContact(hub.alarm, deviceid)], True)
 
 
@@ -98,9 +99,13 @@ class VisonicAlarmContact(Entity):
                 icon = "mdi:hours-24"
             elif self._state == STATE_OPEN:
                 icon = "mdi:alarm-light"
-        elif self._state == STATE_CLOSED:
-            icon = "mdi:door-closed"
-        elif self._state == STATE_OPEN:
+        elif self._state == STATE_CLOSED and ('PIR' in self._name or 'BEAM' in self._name ):
+            icon ="mdi:motion-sensor-off"
+        elif self._state == STATE_OPEN and ('PIR' in self._name or 'BEAM' in self._name ):
+            icon = "mdi:motion-sensor"          
+        elif self._state == STATE_CLOSED and ('PIR' not in self._name or 'BEAM' not in self._name ):
+            icon =  "mdi:door-closed"
+        elif self._state == STATE_OPEN and ('PIR' not in self._name or 'BEAM' not in self._name ):
             icon = "mdi:door-open"
         elif self._state == STATE_OFF:
             icon = "mdi:motion-sensor-off"
@@ -118,12 +123,20 @@ class VisonicAlarmContact(Entity):
         try:
             hub.update()
 
-            device = self._alarm.get_device_by_id(self._id)
+            deviceid = int(self._id.replace("dsc_", ""))
+
+            #_LOGGER.warning("Visonic: Updating device: %s", deviceid)
+
+            device = self._alarm.get_device_by_id(deviceid)
+
+            #_LOGGER.warning("Visonic: Device: %s", device)
 
             status = device.state
 
+            #_LOGGER.warning("Visonic: State: %s", status)
+
             if status is None:
-                _LOGGER.warning("Device could not be found: %s", self._id)
+                _LOGGER.warning("Device could not be found: %s", deviceid)
                 return
 
             if status == "opened":
