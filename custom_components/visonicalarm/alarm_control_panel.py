@@ -164,15 +164,15 @@ class VisonicAlarm(alarm.AlarmControlPanelEntity):
         if status == 'AWAY':
             self._state = STATE_ALARM_ARMED_AWAY
         elif status == 'HOME':
-            self._state = AlarmControlPanelState.ARMED_HOME
+            self._state = STATE_ALARM_ARMED_HOME
         elif status == 'DISARM':
-            self._state = AlarmControlPanelState.DISARMED
+            self._state = STATE_ALARM_DISARMED
         elif status == 'ARMING':
-            self._state = AlarmControlPanelState.ARMING
+            self._state = STATE_ALARM_ARMING
         elif status == 'ENTRYDELAY':
-            self._state = AlarmControlPanelState.PENDING
+            self._state = STATE_ALARM_PENDING
         elif status == 'ALARM':
-            self._state = AlarmControlPanelState.TRIGGERED
+            self._state = STATE_ALARM_TRIGGERED
         else:
             self._state = status
 
