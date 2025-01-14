@@ -125,15 +125,9 @@ class VisonicAlarmContact(Entity):
 
             deviceid = int(self._id.replace("dsc_", ""))
 
-            #_LOGGER.warning("Visonic: Updating device: %s", deviceid)
-
             device = self._alarm.get_device_by_id(deviceid)
 
-            #_LOGGER.warning("Visonic: Device: %s", device)
-
             status = device.state
-
-            #_LOGGER.warning("Visonic: State: %s", status)
 
             if status is None:
                 _LOGGER.warning("Device could not be found: %s", deviceid)
