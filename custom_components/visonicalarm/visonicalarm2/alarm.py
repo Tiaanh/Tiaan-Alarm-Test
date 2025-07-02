@@ -237,7 +237,7 @@ class System(object):
             self.__api.setVersionUrls('12.0')  
         elif '13.0' in rest_versions:
             print('Rest API version 13.0 is supported.')
-            self.__api.setVersionUrls('12.0')              
+            self.__api.setVersionUrls('13.0')              
         else:
             raise Exception(f'Rest API version 8.0, 9.0, 10.0, 12.00 or 13.00 is not supported by server. Supported versions: {", ".join(rest_versions)}')
 
