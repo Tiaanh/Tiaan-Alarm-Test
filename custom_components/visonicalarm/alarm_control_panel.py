@@ -161,6 +161,8 @@ class VisonicAlarm(alarm.AlarmControlPanelEntity):
         status = hub.alarm.state
         if status == 'AWAY':
             self._attr_alarm_state = AlarmControlPanelState.ARMED_AWAY
+        elif status == 'NIGHT':
+            self._attr_alarm_state = AlarmControlPanelState.ARMED_NIGHT
         elif status == 'HOME':
             self._attr_alarm_state = AlarmControlPanelState.ARMED_HOME
         elif status == 'DISARM':
